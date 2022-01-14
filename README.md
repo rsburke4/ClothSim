@@ -5,8 +5,11 @@ The main branch contains an instance of a cloth simulation using this framework.
 To run the simulation:
 
 make clean
+
 make
+
 make sim
+
 ./pbalite
 
 Upon initializing, the simulation may not be apparently visible. The default forces acting on the cloth may be too high. To fix this, with the window active, hold down the 't' key and press 'r' to reset the simulation. This lowers the timestep the simulation uses.
