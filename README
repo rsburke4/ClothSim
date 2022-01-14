@@ -1,4 +1,4 @@
-#Cloth Simulation#
+# Cloth Simulation
 
 This framework, build on OpenGL, is capable of running several physics simulations including basic particles, flocks, rigid bodies, and cloth.
 The main branch contains an instance of a cloth simulation using this framework.
