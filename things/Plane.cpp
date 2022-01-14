@@ -14,7 +14,7 @@
 using namespace std;
 using namespace pba;
 
-//Draws a plane based on the array of "corner" vectors
+// Draws a plane based on the array of "corner" vectors
 void Plane::drawPlane(){
 		glBegin(GL_POLYGON);
 		glColor3f(color.X(), color.Y(), color.Z());
@@ -32,8 +32,8 @@ Vector Plane::getNormal(){
 	return normal;
 }
 
-//Default constructor. The corners are randomly selected and lie on the plane
-//This does not mean that they are ordered correctly, or that they will draw
+// Default constructor. The corners are randomly selected and lie on the plane
+// This does not mean that they are ordered correctly, or that they will draw
 //correctly.
 Plane::Plane(){
 	point = Vector(0, 0, 0);
@@ -49,8 +49,8 @@ Plane::Plane(){
 	color = Vector(drand48(), drand48(), drand48());
 }
 
-//This constructor randomly selects corner values. This does not mean
-//that the corner points are ordered correctly or will draw correctly.
+// This constructor randomly selects corner values. This does not mean
+// that the corner points are ordered correctly or will draw correctly.
 Plane::Plane(Vector p, Vector n){
 	point = p;
 	normal = n;
@@ -70,12 +70,12 @@ void Plane::setCorner(int index, Vector p){
 		corners[index] = p;
 }
 
-//Determine the distace a point is from the nearest point on the plane
+// Determine the distace a point is from the nearest point on the plane
 float Plane::distanceFromPlane(Vector& particlePos){
 	return normal * (particlePos - point);
 }
 
-//Determine if a collision has occurred between the last frame and the current one
+// Determine if a collision has occurred between the last frame and the current one
 bool Plane::checkCollision(ParticleState& particle){
 	float signCheck = distanceFromPlane(particle.lastPos) * distanceFromPlane(particle.position);
 	if(signCheck < 0){
@@ -86,17 +86,14 @@ bool Plane::checkCollision(ParticleState& particle){
 	}
 }
 
-//Determine where on the plane a collision has occured.
+// Determine where on the plane a collision has occured.
 Vector Plane::collisionLocation(ParticleState& particle, float total, float deltaTime){
 	return particle.lastPos + total * (particle.position - particle.lastPos);
 }
 
-//Bounce the particle off of the plane
+// Bounce the particle off of the plane
 void Plane::handleInelasticCollision(ParticleState& particle, float drag, float& deltaTime){
 	while(checkCollision(particle)){
-		/*float newDist = distanceFromPlane(particle.position);
-		float oldDist = distanceFromPlane(particle.lastPos);
-		float total = oldDist / (oldDist - newDist);*/
 		float total = findLocation(particle);
 
 		Vector collision = collisionLocation(particle, total, deltaTime);
@@ -113,7 +110,7 @@ void Plane::setColor(Vector c){
 	color = c;
 }
 
-//A debug function
+// A debug function
 void Plane::printCollision(int i){
 	cout << "Collided with " << i << endl;
 }

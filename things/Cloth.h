@@ -19,7 +19,6 @@ class Cloth{
 
 	public:
 		Cloth();
-		//~Cloth();
 		Cloth(int size, float d, float sForce, float sFriction);
 		void calculateForces();
 		void drawCloth();

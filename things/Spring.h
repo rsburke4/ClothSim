@@ -20,7 +20,6 @@ class Spring{
 	public:
 		Spring();
 		Spring(ParticleState* p1, ParticleState* p2, float sForce, float sFriction);
-		//~Spring();
 		void calculateSpringForces();
 		Vector getParticlePos(int particleNum);
 		void setParticlePosition(int i, Vector v);

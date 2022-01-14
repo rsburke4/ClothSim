@@ -35,7 +35,6 @@ Spring::Spring(ParticleState* p1, ParticleState* p2, float sForce, float sFricti
 	restPos = (p2->position - p1->position).magnitude();
 
 	criticalDampening = (particle1->mass + particle2->mass) * sqrt(strutForce);
-//cout << "critical dampening: " << criticalDampening << endl;
 
 	cout << "made spring: " << particle1->position.X() << " " << particle1->position.Y() << ", " << particle2->position.X() << " " << particle2->position.Y() << endl;
 }
@@ -44,15 +43,10 @@ void Spring::calculateSpringForces(){
 	Vector diff = particle2->position - particle1->position;
 	float mag = diff.magnitude();
 
-//cout << "mag: " << mag << endl;
-//cout << "sForce: " << strutForce << endl;
-//cout << "sFriction: " << strutFriction << endl;
 
 	Vector result =	strutForce * (mag - restPos) * (diff/mag);
 	result += strutFriction * (diff/mag) * ((particle2->velocity - particle1->velocity) * (diff/mag));
-//cout << result.X() << " " << result.Y() << " " << result.Z() << endl;
 	particle1->currentForce += result;
-//particle1->currentForce = Vector(0, 1 - 2* drand48(), 0);
 	particle2->currentForce += result * -1;
 
 }

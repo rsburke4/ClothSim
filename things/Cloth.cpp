@@ -21,7 +21,7 @@ Cloth::Cloth(){
 }
 
 Cloth::Cloth(int size, float d, float sForce, float sFriction){
-	//Delete all particles on screen and make a new vector of them
+	// Delete all particles on screen and make a new vector of them
 	size_t size2 = pow(size, 2);
 	particles.clear();
 	particles.resize(size2);
@@ -53,69 +53,7 @@ Cloth::Cloth(int size, float d, float sForce, float sFriction){
 	cornerSpeed = 1;
 	cornerLoc = 0;
 
-/*cout << "size: " << (int)size2 << endl;
-	int rows = size;
-	int cols = size;
-	distBetweenParticles = d;
-
-	corners[0] = &particles[cols + 1];
-	corners[1] = &particles[cols + rows - 1];
-	corners[2] = &particles[(rows - 1) * (cols - 1)];
-	corners[3] = &particles[rows * (cols -1) - 1];
-	stapleCorners();
-
-	cornerSpeed = 10;
-	cornerAmp = 3;
-	cornerLoc = 0;
-	cornerPos = corners[0]->position;
-
-
-cout << "Cloth Const" << endl;
-
-	for(int i = 0; i <= rows; i++){
-		for(int j = 0; j <= cols; j++){
-			int arrayPos = i * cols + j;
-			particles[arrayPos].position = Vector(j * distBetweenParticles, 0.0, i * distBetweenParticles);
-			particles[arrayPos].velocity = Vector(0, 0, 0);
-			particles[i].pinned = false;
-			//Debug "UV" color
-			particles[arrayPos].color = Color((float)i/rows, (float)j/cols, 0.0f, 1);
-		}
-	}
-cout << "Cloth moved" << endl;*/
-
-	/*for(int i = 0; i < rows - 1; i++){
-		for(int j = 1; j < cols - 1; j++){
-			int arrayPos = i * cols + j;
-			//cout << "i: " << i << " j: " << j << endl;
-			//if(j % (int)pow(size, 2) != 0){
-			if( j < cols){
-cout << "if0" << endl;
-				springs.push_back(Spring(&particles[arrayPos], &particles[arrayPos + 1], sForce, sFriction));
-			}
-			if( i < rows){
-cout << "if1" << endl;
-				springs.push_back(Spring(&particles[arrayPos], &particles[arrayPos + cols], sForce, sFriction));
-			}
-			if( j < cols && i < rows){
-cout << "if2" << endl;
-				springs.push_back(Spring(&particles[arrayPos], &particles[arrayPos + cols + 1], sForce, sFriction));
-cout << "failed 2" << endl;
-			}
-			if( i > 0 && j < cols){
-cout << "if3" << endl;
-				springs.push_back(Spring(&particles[arrayPos], &particles[arrayPos - cols + 1], sForce, sFriction));
-			}
-			//}
-		}
-	}*/
-
-	/*for(int i = 0; i < (int)particles.size(); i++){
-		float newX = particles[i].position.X() - (rows / 2 * distBetweenParticles);
-		particles[i].position = Vector(newX, particles[i].position.Y(), particles[i].position.Z());
-	}*/
-
-cout << "Cloth made" << endl;
+	cout << "Cloth made" << endl;
 }
 
 

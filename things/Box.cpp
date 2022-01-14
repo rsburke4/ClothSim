@@ -45,10 +45,10 @@ Box::Box(Vector llc, Vector urc){
 	sortPlaneCorners();
 }
 
-//This function reassigns the corners in each of the planes
-//comprising the box based on the normals of the planes.
-//Since this is an axis aligned bounding box, the normals
-//of the walls of the box should not change.
+// This function reassigns the corners in each of the planes
+// comprising the box based on the normals of the planes.
+// Since this is an axis aligned bounding box, the normals
+// of the walls of the box should not change.
 void Box::sortPlaneCorners(){
 	for(int i = 0; i < 6; i++){
 		if(planes[i].getNormal() == Vector(0, -1, 0)){

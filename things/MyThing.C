@@ -38,10 +38,8 @@ MyThing::MyThing(const std::string nam) :
 MyThing::~MyThing(){}
 
 void MyThing::Init( const std::vector<std::string>& args ) {
-	//box = Box();
 	gravity = -9.8;
 	drag = 0.0;
-//	cloth = Cloth(particles, 32, 2.0f, 300.0f, 100.0f);
 }
     
 void MyThing::Display() 
@@ -58,8 +56,6 @@ void MyThing::Display()
 	
    glEnd();
 
-		//box.drawBox();
-	//cloth.drawCloth();
 
 }
 
@@ -75,18 +71,6 @@ void MyThing::Keyboard( unsigned char key, int x, int y )
 					gravity += 0.1;
 					cout << "gravity " << gravity << endl;
 				}
-			 /*if( key == 'c' ){
-					for(int i = 0; i < 6; i++){
-						box.setRestitution(box.getRestitution() - (box.getRestitution() / 100));
-					}
-					cout << "coef of restitution " << box.getPlane(0).getRestitution() << endl;
-				}
-			 if( key == 'C' ){
-					for(int i = 0; i < 6; i++){
-						box.setRestitution(box.getRestitution() + (box.getRestitution() / 100));
-					}
-					cout << "coef of restitution " << box.getPlane(1).getRestitution() << endl;
-				}*/
 }
 
 
@@ -99,15 +83,6 @@ void MyThing::solve()
 		}
 	}
 
-	/*for(size_t i = 0; i < particles.size(); i++){
-		if(!particles[i].pinned){
-			Solver::accelerate(particles[i], Vector(0, -9.8, 0));
-		}
-	}*/
-
-	//cloth.updateCorner(dt);
-	//cloth.calculateForces();
-
 	for(size_t i = 0; i < particles.size(); i++){
 		if(!cloth.particles[i].pinned){
 			Solver::velocitySolveLF(cloth.particles[i], drag, dt);
@@ -119,22 +94,6 @@ void MyThing::solve()
 			Solver::positionSolveLF(cloth.particles[i], dt/2);
 		}
 	}
-
-	/*for(size_t i=0; i<particles.size();i++){
-		particles[i].mass = 1;
-		//Add gravity acceleration
-		Solver::accelerate(particles[i], Vector(0, gravity, 0));
-		//Solve for position
-		Solver::positionSolveLF(particles[i], dt/2);
-		//Check for collision
-		box.handleInelasticCollision(particles[i], drag, dt/2);
-		//Solve for velocity
-		Solver::velocitySolveLF(particles[i], drag, dt);
-		//Solve for position
-		Solver::positionSolveLF(particles[i], dt/2);
-		//Check for collisions again
-		box.handleInelasticCollision(particles[i], drag, dt/2);
-	}*/
 
 
    if(emit)
@@ -164,19 +123,6 @@ void MyThing::Reset()
 {
    // Distribute particles with random positions
 	cloth = Cloth(32, 2.0f, 300.0f, 100.0f);
-//   particles.clear();
-//   particles.resize(1024);
-/*   for(size_t i=0;i<particles.size();i++)
-   {
-      double s = 2.0*drand48() - 1.0;
-      double ss = std::sqrt( 1.0 - s*s );
-      double theta = 2.0*3.14159265*drand48();
-      pba::Vector P( ss*std::cos(theta), s, ss*std::sin(theta) );
-      P *= std::pow( drand48(), 1.0/6.0 );
-      particles[i].position = P;
-      particles[i].color = pba::Color(drand48(),drand48(),drand48(),0);
-      particles[i].velocity = pba::Vector(drand48()-0.5,drand48()-0.5,drand48()-0.5);
-   }*/
 }
 
 void MyThing::Usage()
